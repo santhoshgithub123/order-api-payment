@@ -8,4 +8,16 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="1fe90219-1da1-40cb-b7f0-77bdfc69f0f1" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
+	<flow name="sampleFlow" doc:id="2019c0b7-0e50-4dfe-a018-5b374025a6e7" >
+		<http:listener doc:name="Listener" doc:id="bc1747a2-5136-4ff0-a809-a46089ca4491" config-ref="HTTP_Listener_config"/>
+		<ee:transform doc:name="Transform Message" doc:id="87effaf7-adcb-4310-9627-16a08921fb3d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
 </mule>
